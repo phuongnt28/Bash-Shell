@@ -1,0 +1,10 @@
+[Unit]
+Description=interfaceloopback creation
+After=network.service
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/interfaceloopback.sh
+
+[Install]
+WantedBy=multi-user.target
