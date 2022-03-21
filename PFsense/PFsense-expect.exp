@@ -1,0 +1,15 @@
+#!/usr/bin/expect -f
+set USERNAME "admin"
+set PASSWORD "xxxxxxxxxxxxxxx"
+set FRRLOGIN "vtysh"
+set HOST "172.25.254.97"
+spawn ssh -o StrictHostKeyChecking=no $USERNAME@$HOST
+expect "Password for admin@PF_Peering_Active.vng.vn:"
+send  "$PASSWORD\n"
+expect "Enter an option:"
+send  "8\n"
+expect "*/root"
+send  "$FRRLOGIN\r"
+expect "PF_Peering_Active.vng.vn# "
+send  "show bgp summary\r"
+expect eof
